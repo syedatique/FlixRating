@@ -1,0 +1,9 @@
+<div>
+  <p><strong>Username: </strong><%= current_user.username %></p>
+  <p><strong>Name: </strong><%= current_user.name %></p>
+  <p><strong>Email: </strong><%= current_user.email %></p>
+</div>
+
+<div class="edit_profile_link">
+  <%= link_to "Edit Profile", edit_user_registration_path %>
+</div>
