@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+Category.delete_all
+c1 = Category.create!(decade_name: "1960s")
+c2 = Category.create!(decade_name: "1970s")
+c3 = Category.create!(decade_name: "1980s")
+c4 = Category.create!(decade_name: "1990s")
+c5 = Category.create!(decade_name: "2000s")
