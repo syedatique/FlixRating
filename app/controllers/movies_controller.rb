@@ -25,7 +25,28 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-    @movie = Movie.new(movie_params)
+    @category_id = params[:movie][:category_id]
+    @title = params[:movie][:title]
+    if @title && @title > ''
+    @title = @title.gsub(' ', '+') # replacing any space with +
+    # look it up from OMDB
+    url = "http://www.omdbapi.com/?t=#{@title}"
+    @search_results = HTTParty.get(url)
+    end
+
+    @movie = Movie.new
+    @movie.title = @search_results['Title'].gsub("'","")
+    @movie.release_year = @search_results['Year'].to_i
+    @movie.director = @search_results['Director'].gsub("'","''")
+    @movie.stars = @search_results['Actors'].gsub("'","''")
+    @movie.plot = @search_results['Plot'].gsub("'","''")
+    @movie.poster_url = @search_results['Poster'].gsub("'","''")
+    @movie.imdb_rating = @search_results['imdbRating'].to_f
+    @movie.metascore = @search_results['Metascore'].to_f
+    @movie.category_id = @category_id
+
+
+    # @movie = Movie.new(movie_params)
 
     respond_to do |format|
       if @movie.save
