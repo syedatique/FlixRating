@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222103414) do
+ActiveRecord::Schema.define(version: 20160222225246) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "decade_name"
@@ -26,13 +26,14 @@ ActiveRecord::Schema.define(version: 20160222103414) do
     t.string   "director"
     t.string   "stars"
     t.integer  "vote"
-    t.integer  "imdb_rating"
     t.string   "imdb_id"
     t.string   "poster_url"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
     t.integer  "category_id"
+    t.float    "metascore"
+    t.float    "imdb_rating"
   end
 
   create_table "users", force: :cascade do |t|
