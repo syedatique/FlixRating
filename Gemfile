@@ -9,6 +9,7 @@ gem 'imdb', '~> 0.8'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'autoprefixer-rails'
 gem 'will_paginate'
+gem 'httparty'
 
 
 # Colored output to console
