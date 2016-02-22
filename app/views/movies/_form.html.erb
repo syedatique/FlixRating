@@ -12,8 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.number_field :title %>
+    <%= f.label :category_id %><br>
+    <%= f.select :category_id, Category.all.map { |c| [c.decade_name, c.id] } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title, 'Type the Title of one of the best three movies' %><br>
+    <%= f.text_field :title %>
   </div>
   <div class="actions">
     <%= f.submit %>
