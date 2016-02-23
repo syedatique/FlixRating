@@ -43,4 +43,32 @@
    padding: 0 auto;
  }
 
+ /**********Jumberton*********/
+ .jumbotron {
+   padding-top: 6rem;
+   padding-bottom: 6rem;
+   margin-bottom: 0;
+   // background-color: #534E4E;
+   border-radius: 10px;
+   background-image: url("https://www.planwallpaper.com/static/images/wood_background_hd_picture_3_169844.jpg");
+ }
+
+ .jumbotron p:last-child {
+   margin-bottom: 0;
+ }
+
+ .jumbotron-heading {
+   font-weight: 300;
+   text-shadow: 0 20px 20px rgba(100,200,20,.34);
+ }
+
+ .jumbotron .container {
+   max-width: 80rem;
+ }
+
+ .text-xs-center {
+     text-align: center!important;
+     color: white;
+     text-shadow: 0px 0px 0 rgb(137,106,213);
+ }
 

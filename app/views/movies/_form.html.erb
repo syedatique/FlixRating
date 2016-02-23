@@ -10,17 +10,18 @@
       </ul>
     </div>
   <% end %>
+<div class="container">
+    <div class="form-group">
+      <%= f.label :category_id, 'Decade: ' %>
+      <%= f.select :category_id, Category.all.map { |c| [c.decade_name, c.id] }, class: 'form-control' %><br>
 
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.select :category_id, Category.all.map { |c| [c.decade_name, c.id] } %>
-  </div>
+      <%= f.label :title, 'Type the Title of one of the best three movies' %>
+      <%= f.text_field :title, class: 'form-control' %><br>
+      <%= f.submit "Submit", class: 'btn btn-success' %>
 
-  <div class="field">
-    <%= f.label :title, 'Type the Title of one of the best three movies' %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    </div>
+
+  <% end %>
+
+</div>
+  
