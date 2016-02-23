@@ -11,6 +11,7 @@
       <th>Actors</th>
       <th>IMDB Rating</th>
       <th>Metascore Rating</th>
+      <th>User Vote</th>
       <th>Decade</th>
       <!-- <th colspan="12"></th> -->
     </tr>
@@ -29,12 +30,13 @@
         <td><%= movie.stars %></td>
         <td><%= movie.imdb_rating %></td>
         <td><%= movie.metascore %></td>
+        <td><%= movie.vote %></td>
         <td><%= movie.category.try(:decade_name) %></td>
       </tr>
       <tr>
         <td><%= link_to 'Show', movie, class: 'btn btn-success' %></td>
-        <!-- <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        <td><%= link_to 'Edit', edit_movie_path(movie), class: 'btn btn-success' %></td>
+        <td><%= link_to 'Destroy', movie, class: 'btn btn-success', method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
   </tbody>
 </table>

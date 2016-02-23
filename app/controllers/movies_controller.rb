@@ -45,6 +45,7 @@ class MoviesController < ApplicationController
     @movie.metascore = @search_results['Metascore'].to_f
     @movie.category_id = @category_id
     @movie.user_id = current_user.id
+    @movie.vote = 1
 
 
     # @movie = Movie.new(movie_params)
