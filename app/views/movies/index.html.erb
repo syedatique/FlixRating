@@ -12,6 +12,7 @@
       <th>IMDB Rating</th>
       <th>Metascore Rating</th>
       <th>User Vote</th>
+      <th>Movie Ranking</th>
       <th>Decade</th>
       <!-- <th colspan="12"></th> -->
     </tr>
@@ -31,6 +32,7 @@
         <td><%= movie.imdb_rating %></td>
         <td><%= movie.metascore %></td>
         <td><%= movie.vote %></td>
+        <td><%= movie.movie_rating %></td>
         <td><%= movie.category.try(:decade_name) %></td>
       </tr>
       <tr>

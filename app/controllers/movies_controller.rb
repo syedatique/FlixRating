@@ -6,7 +6,23 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     if params[:category_id]
-      @movies = Movie.where(:category_id => params[:category_id]).select('*').group(:title).having("count(*) > 0").order('imdb_rating DESC')
+      @movies = Movie.where(:category_id => params[:category_id]).select('*').group(:title).having("count(*) > 0").order('imdb_rating DESC') #movies are grouped by having same title and ordered by imbd_rating descended
+
+      @films = @movies.count # counting the movies with same title
+      a = @films.map {|key, value| value} # gives an array, with vote for each movies
+      # no_of_movies = Movie.where(:category_id => params[:category_id]).count
+      @movies.each_with_index do |m, index|
+        no_of_movies = Movie.where(:category_id => params[:category_id]).count
+        user_point = a[index]/no_of_movies
+        imdb_point = m.imdb_rating/10
+        metascore_point = m.metascore/100
+        movie_rating_average = (user_point+imdb_point+metascore_point)/3
+        
+        m.vote = a[index]
+        m.movie_rating = (movie_rating_average*100).floor
+      end
+      # @movies.order('movie_rating DESC')
+
     else
       @movies = Movie.all
     end
@@ -97,6 +113,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :category_id, :user_id, :release_year, :plot, :director, :stars, :vote, :imdb_id, :imdb_rating, :poster_url, :metascore)
+      params.require(:movie).permit(:title, :category_id, :user_id, :release_year, :plot, :director, :stars, :vote, :imdb_id, :imdb_rating, :poster_url, :metascore, :movie_rating)
     end
 end
