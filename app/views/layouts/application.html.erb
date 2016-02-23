@@ -26,11 +26,11 @@
               <a class="dropdown-toggle btn btn-info" data-toggle="dropdown" href="#" role="button"> Movies <span class="caret"></span></a>
 
               <ul class="dropdown-menu" role="menu">
-                <%= link_to "1960s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1960s").id}"), class: "btn btn-primary-outline dropdown-item" %>
-                <%= link_to "1970s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1970s").id}"), class: "btn btn-primary-outline dropdown-item" %>
-                <%= link_to "1980s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1980s").id}"), class: "btn btn-primary-outline dropdown-item" %>
-                <%= link_to "1990s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1990s").id}"), class: "btn btn-primary-outline dropdown-item" %>
-                <%= link_to "2000s", movies_path(:category_id=>"#{Category.find_by(decade_name: "2000s").id}"), class: "btn btn-primary-outline dropdown-item" %>
+                <li><%= link_to "1960s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1960s").id}"), class: "btn btn-primary-outline dropdown-item" %></li>
+                <li><%= link_to "1970s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1970s").id}"), class: "btn btn-primary-outline dropdown-item" %></li>
+                <li><%= link_to "1980s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1980s").id}"), class: "btn btn-primary-outline dropdown-item" %></li>
+                <li><%= link_to "1990s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1990s").id}"), class: "btn btn-primary-outline dropdown-item" %></li>
+                <li><%= link_to "2000s", movies_path(:category_id=>"#{Category.find_by(decade_name: "2000s").id}"), class: "btn btn-primary-outline dropdown-item" %></li>
               </ul>
             </li>
           </div> <!-- Movie Button -->

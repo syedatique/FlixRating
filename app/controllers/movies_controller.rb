@@ -5,9 +5,8 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    # @movies = Movie.all
     if params[:category_id]
-      @movies = Movie.where(:category_id => params[:category_id]).order('imdb_rating DESC')
+      @movies = Movie.where(:category_id => params[:category_id]).select('*').group(:title).having("count(*) > 0").order('imdb_rating DESC')
     else
       @movies = Movie.all
     end
