@@ -1,7 +1,16 @@
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
+<div class="container">
+  <div class="thumbnail">
+    <img src="<%= @movie.poster_url %>" alt=" Couldn't find it", class:"img-responsive img-rounded">
+    <h3 class="bg-default" style="text-align: center;"><%= @movie.title %></h3>
+    <li class="list-group-item list-group-item-info"><strong>Year: </strong><%= @movie.release_year %></li>
+    <li class="list-group-item list-group-item-info"><strong>Plot: </strong><%= @movie.plot %></li>
+    <li class="list-group-item list-group-item-info"><strong>Director: </strong><%= @movie.director %></li>
+    <li class="list-group-item list-group-item-info"><strong>Actors: </strong><%= @movie.stars %></li>
+    <li class="list-group-item list-group-item-info"><strong>IMDB Rating: </strong><%= @movie.imdb_rating %></li>
+    <li class="list-group-item list-group-item-info"><strong>Metscore: </strong><%= @movie.metascore %></li>
+    
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<%#= link_to 'Edit', edit_movie_path(@movie) %> |
+<%#= link_to 'Back', movies_path %>
