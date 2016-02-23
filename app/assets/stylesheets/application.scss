@@ -16,3 +16,31 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+
+ /*********Top Bar**********/
+ .bg-inverse {
+     color: #eceeef;
+     background-color: #5A5C5E;
+ }
+
+ #navbar{
+   padding: 0 20px;
+ }
+ #topnavbar{
+   // padding: 0 20px;
+   border-radius: 10px;
+ }
+
+ /******* container*******/
+ .container {
+   width: 100%;
+ }
+
+ /******** sign up form********/
+ #sign-up-form {
+   width:75%;
+   padding: 0 auto;
+ }
+
+

@@ -11,29 +11,63 @@
 </head>
 <body>
 
-<div>
-  <nav>
-    <ul>
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Movies", movies_path %></li>
-      
-    <% if user_signed_in? %>
-      <li><%= link_to "Profile", user_path(current_user) %></li>
-      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to "Register", new_user_registration_path %></li>
-      <li><%= link_to "Sign In", new_user_session_path %></li>
-    <% end %>
-    </ul>
+<div class="container-fluid">
+  <nav class="navbar navbar-static-top navbar-dark bg-inverse" id="topnavbar">
+    <div class="container">
+      <div id="navbar">
+        <div class="nav navbar-nav pull-left" role="toolbar">
+          <div class="btn-group" role="group" aria-label="First group">
+            <%= link_to "Home", root_path, class: 'btn btn-info' %>
+          </div> <!-- Home Button -->
+
+
+          <div class="btn-group" role="group" aria-label="Second group">
+            <li class="dropdown">
+              <a class="dropdown-toggle btn btn-info" data-toggle="dropdown" href="#" role="button"> Movies <span class="caret"></span></a>
+
+              <ul class="dropdown-menu" role="menu">
+                <%= link_to "1960s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1960s").id}"), class: "btn btn-primary-outline dropdown-item" %>
+                <%= link_to "1970s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1970s").id}"), class: "btn btn-primary-outline dropdown-item" %>
+                <%= link_to "1980s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1980s").id}"), class: "btn btn-primary-outline dropdown-item" %>
+                <%= link_to "1990s", movies_path(:category_id=>"#{Category.find_by(decade_name: "1990s").id}"), class: "btn btn-primary-outline dropdown-item" %>
+                <%= link_to "2000s", movies_path(:category_id=>"#{Category.find_by(decade_name: "2000s").id}"), class: "btn btn-primary-outline dropdown-item" %>
+              </ul>
+            </li>
+          </div> <!-- Movie Button -->
+        </div> <!-- NAV BAR LEFT END -->
+
+
+        <div class="nav navbar-nav pull-right" > 
+          <div class="btn-group" role="group" aria-label="Third group">
+            <% if user_signed_in? %>
+              <li class="dropdown">
+              <a class="dropdown-toggle btn btn-success btn-sm" data-toggle="dropdown" href="#" role="button"><%= current_user.email %><span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><%= link_to "View Profile", user_path(current_user) %></li>
+                  <li><%= link_to 'Edit Profile', edit_user_registration_path %></li> 
+                  <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </li>
+            <% else %>
+            <div class="btn-group" role="group" aria-label="First group">
+              <%= link_to 'Log In', new_user_session_path, class: 'btn btn-primary' %>
+              <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary' %>
+            </div> <!-- SIGNUP/LOGIN Button -->
+            <% end %>
+          </div>
+        </div> <!-- NAV BAR RIGHT END -->
+      </div>
+    </div>
   </nav>
-</div>
-<div>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-</div>
+
+  <div class="container">
+    <div class="alert alert-notice"><%= notice %></div>
+    <div class="alert alert-alert"><%= alert %></div>
+  </div>
 
 
-<%= yield %>
+  <%= yield %>
+</div>
 
 </body>
 </html>
