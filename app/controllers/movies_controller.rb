@@ -44,6 +44,7 @@ class MoviesController < ApplicationController
     @movie.imdb_rating = @search_results['imdbRating'].to_f
     @movie.metascore = @search_results['Metascore'].to_f
     @movie.category_id = @category_id
+    @movie.user_id = current_user.id
 
 
     # @movie = Movie.new(movie_params)
