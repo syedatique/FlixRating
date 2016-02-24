@@ -1,21 +1,14 @@
-
-
-<div class="container home">
+<div class="container">
   <div class="row">
     <div class="col-sm-6 col-md-12">
-      <div class="container" id="user-edit-page">
-        <div class="thumbnail" >
-          <div class="caption">
+      <div class="thumbnail" >
+        <div class="caption">
           <li class="list-group-item list-group-item-info"><strong>Username:  </strong> <%= current_user.username %></li>
           <li class="list-group-item list-group-item-info"><strong>Name:  </strong><%= current_user.name %></li>
           <li class="list-group-item list-group-item-info"><strong>Email:  </strong><%= current_user.email %></li>
-          </div>
-
-          <div class="thumbnail" style="border:none;">
-            <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-info' %>
-          </div>
         </div>
-      </div>
+        <%#= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-info' %>
+      </div> 
     </div>
   </div>
 </div>

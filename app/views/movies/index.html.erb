@@ -12,7 +12,7 @@
       <th>IMDB Rating</th>
       <th>Metascore Rating</th>
       <th>User Vote</th>
-      <th>Movie Ranking</th>
+      <th>Movie Ranking (Average of User vote, IMDB and Metascore rating), % </th>
       <th>Decade</th>
       <!-- <th colspan="12"></th> -->
     </tr>
@@ -37,14 +37,14 @@
       </tr>
       <tr>
         <td><%= link_to 'Show', movie, class: 'btn btn-success' %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie), class: 'btn btn-success' %></td>
-        <td><%= link_to 'Destroy', movie, class: 'btn btn-success', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= link_to 'Edit', edit_movie_path(movie), class: 'btn btn-success' %></td>
+        <td><%#= link_to 'Destroy', movie, class: 'btn btn-success', method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'Nominate Your Movie', new_movie_path, class: 'btn btn-lg btn-success' %>
+<%#= link_to 'Nominate Your Movie', new_movie_path, class: 'btn btn-lg btn-success' %>
 
 

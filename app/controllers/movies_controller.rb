@@ -1,16 +1,16 @@
 class MoviesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! # User Authintication
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   # GET /movies
-  # GET /movies.json
   def index
     if params[:category_id]
       @movies = Movie.where(:category_id => params[:category_id]).select('*').group(:title).having("count(*) > 0").order('imdb_rating DESC') #movies are grouped by having same title and ordered by imbd_rating descended
 
       @films = @movies.count # counting the movies with same title
-      a = @films.map {|key, value| value} # gives an array, with vote for each movies
-      # no_of_movies = Movie.where(:category_id => params[:category_id]).count
+      a = @films.map {|key, value| value} # Array with vote count for each movies
+      
+      # Movie Ranking Algorithm: Using Average of User vote, IMDB rating and Metascore rating
       @movies.each_with_index do |m, index|
         no_of_movies = Movie.where(:category_id => params[:category_id]).count
         user_point = a[index]/no_of_movies
@@ -21,15 +21,13 @@ class MoviesController < ApplicationController
         m.vote = a[index]
         m.movie_rating = (movie_rating_average*100).floor
       end
-      # @movies.order('movie_rating DESC')
-
+      # @movies = @movies.order('movie_rating DESC')
     else
       @movies = Movie.all
     end
   end
 
   # GET /movies/1
-  # GET /movies/1.json
   def show
   end
 
@@ -43,7 +41,6 @@ class MoviesController < ApplicationController
   end
 
   # POST /movies
-  # POST /movies.json
   def create
     @category_id = params[:movie][:category_id]
     @title = params[:movie][:title]
@@ -67,9 +64,6 @@ class MoviesController < ApplicationController
     @movie.user_id = current_user.id
     @movie.vote = 1
 
-
-    # @movie = Movie.new(movie_params)
-
     respond_to do |format|
       if @movie.save
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
@@ -82,7 +76,6 @@ class MoviesController < ApplicationController
   end
 
   # PATCH/PUT /movies/1
-  # PATCH/PUT /movies/1.json
   def update
     respond_to do |format|
       if @movie.update(movie_params)
@@ -96,7 +89,6 @@ class MoviesController < ApplicationController
   end
 
   # DELETE /movies/1
-  # DELETE /movies/1.json
   def destroy
     @movie.destroy
     respond_to do |format|
